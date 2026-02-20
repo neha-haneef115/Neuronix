@@ -311,14 +311,14 @@ export const Particles: React.FC<ParticlesProps> = ({
       <canvas ref={canvasRef} className="size-full" />
       <div className="absolute top-40 left-50">
         <img 
-          src="/spark1.png" 
+          src="/assets/Home/spark1.png" 
           alt="Spark 1" 
           className="w-15 h-auto"
         />
       </div>
       <div className="absolute top-110 right-40">
         <img 
-          src="/spark1.png" 
+          src="/assets/Home/spark1.png" 
           alt="Spark 2" 
           className="w-15 h-auto"
         />

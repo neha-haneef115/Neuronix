@@ -2,8 +2,8 @@ import { Particles } from "@/components/ui/particles"
 import { RippleButton } from "@/components/ui/ripple-button"
 export default function Hero() {
   return (
-    <section className="min-h-screen  text-white px-20 overflow-hidden relative">
-      {/* Background Particles */}
+    <section className=" text-white px-20 relative">
+      
       <div className="absolute inset-0 overflow-hidden">
         <Particles quantity={30}/>
       </div>
@@ -12,7 +12,7 @@ export default function Hero() {
       <nav className="relative z-10 flex items-center justify-between px-8 py-10 ">
         <div className="flex items-center space-x-2">
           <img 
-            src="/logo.png" 
+            src="/assets/Home/logo.png" 
             alt="DataPulse Logo" 
             className="h-8 w-auto"
           /><span className="text-3xl text-[#EFE5FC] font-bold">Neuronix</span>
@@ -34,7 +34,7 @@ export default function Hero() {
         <h1 className="text-5xl leading-[1.1] md:text-[80px] font-bold mb-6 text-[#EFE5FC] font-poppins">
          See Your Data,
          <br />
-         <span className="text-[#9C63E7]">Make Smarter Moves</span>
+         <span >Make Smarter Moves</span>
         </h1>
         
         <p className="text-md text-gray-300 max-w-xl mb-12 mt-10 leading-relaxed font-poppins">
@@ -55,14 +55,17 @@ export default function Hero() {
       </div>
  
           {/* CIRCLE WRAPPER */}
-      <div className="absolute top-120 left-0 w-full h-full overflow-hidden pointer-events-none">
-        <div className="absolute left-1/2 -top-[1730px] -translate-x-1/2 w-[2000px] h-[2000px] rounded-full 
-        bg-transparent backdrop-blur-[2px]" 
-        style={{
-          boxShadow: 'inset 0 0 120px rgba(156, 99, 231, 0.3), inset 0 0 80px rgba(156, 99, 231, 0.2), inset 0 0 40px rgba(156, 99, 231, 0.1)',
-          border: '0.1px solid rgba(156, 99, 231, 0.4)',
-          background: 'radial-gradient(circle at center, transparent 0%, rgba(156, 99, 231, 0.15) 10%, rgba(156, 99, 231, 0.05) 40%, transparent 75%)'
-        }} />
+      <div className="absolute top-140  left-0 w-full h-full pointer-events-none">
+        <div className="absolute left-1/2 -top-[2840px] -translate-x-1/2 w-[3000px] h-[3000px] rounded-full 
+        bg-transparent " 
+       style={{
+  boxShadow: `
+    inset 0 0 140px #4909aa90,
+    inset 0 0 80px #6a07ff99
+  `,
+  
+}}/>
+
       </div>
     
     </section>
