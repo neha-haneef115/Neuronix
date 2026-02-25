@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-
+import SectionText from "@/components/ui/SectionText"
 type FAQ = {
   question: string;
   answer: string;
@@ -44,18 +44,15 @@ export default function FaqSection() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
-    <section className="bg-[#0b0614] text-white py-24 px-6">
+    <section id='FAQ' className="bg-[#0b0614] text-white py-24 px-6">
       <div className="max-w-3xl mx-auto">
         {/* Header */}
         <div className="text-center mb-12 space-y-3">
-          <h2 className="text-4xl font-bold">
-            Your Questions?{" "}
-            <span className="text-violet-400">Answered</span>
-          </h2>
-          <p className="text-gray-400 text-sm max-w-xl mx-auto">
-            Find clear, concise answers to common questions and get the
-            information you need—fast and hassle-free.
-          </p>
+         <SectionText
+  title="Your Questions?"
+  highlight="Answered"
+  description="Find the answers you need, clearly and quickly—no extra hassle."
+/>
         </div>
 
         {/* FAQ List */}

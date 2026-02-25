@@ -1,10 +1,10 @@
 export default function Footer() {
   return (
-    <footer className="relative bg-[#0a0416] overflow-hidden">
+    <footer id="Contact" className="relative bg-[#0a0416] overflow-hidden">
       {/* Background word */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
         <span className="text-[220px] font-extrabold tracking-tight text-white/5 select-none">
-          Nexus
+         
         </span>
       </div>
 
@@ -43,7 +43,7 @@ export default function Footer() {
 
         {/* Bottom row */}
         <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-white/50">
-          <span>© 2024 Nexus. All rights reserved</span>
+          <span>© 2026 Neuronix. All rights reserved</span>
 
           <div className="flex gap-8">
             <a href="#" className="hover:text-white transition">

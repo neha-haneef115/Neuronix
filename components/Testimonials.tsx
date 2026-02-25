@@ -1,5 +1,5 @@
 "use client";
-
+import SectionText from "@/components/ui/SectionText"
 import Image from "next/image";
 import { FaFacebookF, FaStar, FaXTwitter } from "react-icons/fa6";
 
@@ -59,18 +59,11 @@ export default function Testimonials() {
 
       <div className="relative max-w-6xl mx-auto px-6 text-center">
         {/* Heading */}
-        <h2 className="text-4xl md:text-5xl font-bold text-white">
-          Hear It from Those{" "}
-          <span className="bg-gradient-to-r from-purple-400 to-indigo-400 bg-clip-text text-transparent">
-            Who Matter Most
-          </span>
-        </h2>
-
-        <p className="text-gray-400 mt-4 max-w-xl mx-auto">
-          See what our customers have to say about their experiences.
-          Real stories, straight from the people who matter most.
-        </p>
-
+       <SectionText
+  title="Hear It from Those"
+  highlight="Who Matter Most"
+  description="See what our customers have to say about their experiences. Real stories, straight from the people who matter most."
+/>
         {/* Cards */}
         <div className="mt-16 flex gap-6 overflow-x-auto scrollbar-hide pb-4">
           {testimonials.map((item) => (

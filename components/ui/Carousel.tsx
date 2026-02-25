@@ -1,139 +1,114 @@
 "use client";
-
+import SectionText from "@/components/ui/SectionText";
+import React, { ReactNode } from "react";
 import Image from "next/image";
+import { IoSend } from "react-icons/io5";
 
 const cardBg =
-  "radial-gradient(120% 120% at 85% 0%, rgba(97,24,200,0.8) 0%, rgba(13,3,24,0.9) 55%, #0D0318 85%)";
-
+  "radial-gradient(120% 120% at 85% 0%, rgba(80, 32, 151, 0.9) 0%, rgba(13,3,24,0.9) 55%, #0D0318 85%)";
 const cardStroke =
-  "linear-gradient(135deg, #C3B8F9 0%, #736D93 100%)";
+  "linear-gradient(135deg, rgba(195,184,249,0.35) 0%, rgba(115,109,147,0.35) 100%)";
 
-function Card({ children, className = "" }) {
-  return (
-    <div
-      className={`relative rounded-2xl p-[1px] ${className}`}
-      style={{ background: cardStroke }}
-    >
-      <div
-        className="rounded-2xl p-6 h-full"
-        style={{ backgroundImage: cardBg }}
-      >
-        {children}
-      </div>
-    </div>
-  );
+interface CardProps {
+  children: ReactNode;
+  className?: string;
+  innerGlow?: boolean;
+  style?: React.CSSProperties;
 }
 
-export default function GrowthImpact() {
+const Card: React.FC<CardProps> = ({ children, className = "", innerGlow = false, style }) => (
+  <div className={`relative rounded-2xl p-[1px] ${className}`} style={{ background: cardStroke, ...style }}>
+    <div className="relative rounded-2xl p-4 overflow-hidden" style={{ background: cardBg }}>
+      {innerGlow && (
+        <div className="absolute inset-x-0 bottom-0 h-[40%] bg-gradient-to-t from-black/70 to-transparent rounded-b-2xl z-10 pointer-events-none" />
+      )}
+      <div className="relative z-20 flex flex-col gap-4 px-4 h-full">{children}</div>
+    </div>
+  </div>
+);
+
+const GrowthImpact: React.FC = () => {
+  const users = [
+    { name: "Alex Hales", email: "alexhales@gmail.com", img: "/assets/carousel/1.jpg" },
+    { name: "Matthew Faris", email: "matthewfaris@gmail.com", img: "/assets/carousel/2.jpg" },
+    { name: "Georgia", email: "georgia@gmail.com", img: "/assets/carousel/3.jpg" },
+  ];
+
   return (
-    <section className="w-full bg-[#0D0318] text-white py-20">
-      <div className="max-w-5xl mx-auto px-8 ">
-        {/* Heading */}
-        <h2 className="text-4xl md:text-5xl font-bold mb-4">
-          The Story of Our <span className="text-[#6A07FF]">Growth & Impact</span>
-        </h2>
-        <p className="text-gray-300 mb-16 max-w-2xl">
-          With every milestone, we continue to drive real impact—helping companies
-          scale, streamline, and succeed.
-        </p>
-
-        {/* ================= TOP ROW ================= */}
-        <div className="grid grid-cols-5 text-left gap-4 mb-4">
-          {/* 60% LEFT */}
-          <Card className="col-span-3">
-            <div className="w-full h-64 relative rounded-xl overflow-hidden mb-4">
-              <Image
-                src="/assets/Home/Dashboard-1.png"
-                alt="Dashboard preview"
-                fill
-                className="object-contain"
-              />
-            </div>
-            <h3 className="text-xl font-semibold mb-1">
-              All-in-One Dashboard
-            </h3>
-            <p className="text-gray-300">
-              Manage everything from a single, intuitive interface.
-            </p>
-          </Card>
-
-          {/* 40% RIGHT */}
-          <Card className="col-span-2">
-            <div className="space-y-3 mb-6">
-              {[
-                { name: "Alex Hales", email: "alexhales@gmail.com" },
-                { name: "Matthew Faris", email: "matthewfaris@gmail.com" },
-                { name: "Georgia", email: "georgia@gmail.com" },
-              ].map((u, i) => (
-                <div
-                  key={i}
-                  className="flex items-center justify-between rounded-full px-3 py-2 bg-[#2B1555]/70 backdrop-blur border border-white/10"
-                >
-                  <div>
-                    <p className="text-sm font-medium">{u.name}</p>
-                    <p className="text-xs text-gray-400">{u.email}</p>
-                  </div>
-                  <div className="w-8 h-8 rounded-full bg-[#6A07FF] flex items-center justify-center text-xs">
-                    →
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            <h3 className="text-lg font-semibold mb-1">
-              Seamless Integrations
-            </h3>
-            <p className="text-sm text-gray-300">
-              Connect effortlessly with others.
-            </p>
-          </Card>
-        </div>
+    <section className="w-full text-white py-20">
+      <div className="max-w-5xl mx-auto px-8 text-center">
+        <SectionText
+          title="The Story of Our"
+          highlight="Growth & Impact"
+          description="Each milestone reflects real outcomes. We help companies grow, streamline operations, and execute better."
+          titleClassName="max-w-[70%]"
+        />
 
         {/* ================= SECOND ROW ================= */}
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid grid-cols-2 gap-4 text-left">
           {/* LEFT STACK */}
-          <div className="flex flex-col gap-4">
-            <Card>
-              <div className="flex justify-between items-center">
-                <div>
-                  <h4 className="font-semibold mb-1">Team Collaboration</h4>
-                  <p className="text-gray-300 text-sm">
-                    Built-in communication & sharing
-                  </p>
+          <div className="flex flex-col gap-6 h-full">
+            {/* Each left card takes 50% height of right card */}
+            <Card innerGlow style={{ flex: 1 }}>
+              <div className="flex justify-between items-start h-full">
+                <div className="space-y-3">
+                  <h3 className="text-2xl font-semibold text-white">Team Collaboration</h3>
+                  <p className="text-gray-400 text-base">Built-in communication & sharing</p>
                 </div>
-                <div className="flex -space-x-3">
-                  <div className="w-10 h-10 rounded-full bg-gray-500 border-2 border-[#0D0318]" />
-                  <div className="w-10 h-10 rounded-full bg-gray-400 border-2 border-[#0D0318]" />
-                  <div className="w-10 h-10 rounded-full bg-gray-300 border-2 border-[#0D0318]" />
+                <div className="flex -space-x-4">
+                  {["/assets/carousel/1.avif", "/assets/carousel/2.avif", "/assets/carousel/3.avif"].map(
+                    (src, i) => (
+                      <div
+                        key={i}
+                        className="relative w-14 h-14 rounded-full border-[3px] border-[#140726] overflow-hidden shadow-lg"
+                      >
+                        <Image src={src} alt={`User ${i}`} fill className="object-cover" />
+                      </div>
+                    )
+                  )}
                 </div>
               </div>
             </Card>
 
-            <Card>
-              <div className="flex justify-between items-center">
-                <div>
-                  <h4 className="font-semibold mb-1">Regular Updates</h4>
-                  <p className="text-gray-300 text-sm">
-                    Continuous improvements & new features
-                  </p>
+            <Card innerGlow style={{ flex: 1 }}>
+              <div className="flex justify-between items-center h-full">
+                <div className="space-y-3">
+                  <h3 className="text-2xl font-semibold text-white">Regular Updates</h3>
+                  <p className="text-gray-400 text-base">Continuous improvements & new features</p>
                 </div>
-                <span className="text-4xl text-[#6A07FF]">↻</span>
+                <div className="w-16 h-16 rounded-full bg-gradient-to-br from-[#7B2CFF] to-[#A855F7] flex items-center justify-center shadow-lg">
+                  <svg
+                    className="w-8 h-8 text-white"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M4 4v6h6M20 20v-6h-6M20 9a8 8 0 00-14-3M4 15a8 8 0 0014 3"
+                    />
+                  </svg>
+                </div>
               </div>
             </Card>
           </div>
 
-          {/* RIGHT TALL */}
-          <Card>
-            <div className="w-full h-28 rounded-xl bg-gradient-to-br from-[#2A0E61] to-[#120824] flex items-center justify-center mb-4">
-              <span className="text-gray-400 text-sm">Chart</span>
+          {/* RIGHT TALL CARD */}
+          <Card className="p-6" innerGlow style={{ display: "flex", flexDirection: "column", height: "100%" }}>
+            <div className="relative w-full flex-1 rounded-xl overflow-hidden">
+              <Image src="/assets/carousel/analytics.png" alt="Chart" fill className="object-contain" />
             </div>
-            <h4 className="font-semibold mb-1">Real-Time Analytics</h4>
-            <p className="text-gray-300 text-sm">
-              Drive decisions with powerful insights
-            </p>
+            <div className="flex flex-col gap-3 mt-2">
+              <h3 className="text-2xl font-semibold m-0 text-white">Real-Time Analytics</h3>
+              <p className="text-gray-400 text-md m-0">Drive decisions with powerful insights</p>
+            </div>
           </Card>
         </div>
       </div>
     </section>
   );
-}
+};
+
+export default GrowthImpact;

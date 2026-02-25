@@ -2,7 +2,7 @@ import { Particles } from "@/components/ui/particles"
 import { RippleButton } from "@/components/ui/ripple-button"
 export default function Hero() {
   return (
-    <section className=" text-white px-20 relative">
+    <section id="Home" className="text-white px-20 relative">
       
       <div className="absolute inset-0 overflow-hidden">
         <Particles quantity={30}/>
@@ -19,11 +19,11 @@ export default function Hero() {
         </div>
         
         <div className="hidden text-xs md:flex items-center space-x-15">
-          <a href="#" className="text-white hover:text-purple-300 transition-colors">Home</a>
-          <a href="#" className="text-white hover:text-purple-300 transition-colors">Our Platform</a>
-          <a href="#" className="text-white hover:text-purple-300 transition-colors">Features</a>
-          <a href="#" className="text-white hover:text-purple-300 transition-colors">FAQ</a>
-          <a href="#" className="text-white hover:text-purple-300 transition-colors">Contact</a>
+          <a href="#Home" className="text-white hover:text-purple-300 transition-colors">Home</a>
+          <a href="#OurPlatfrom" className="text-white hover:text-purple-300 transition-colors">Our Platform</a>
+          <a href="#Features" className="text-white hover:text-purple-300 transition-colors">Features</a>
+          <a href="#FAQ" className="text-white hover:text-purple-300 transition-colors">FAQ</a>
+          <a href="#Contact" className="text-white hover:text-purple-300 transition-colors">Contact</a>
         </div>
         
         <RippleButton>Contact Us</RippleButton>
