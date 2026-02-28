@@ -13,15 +13,11 @@ interface CardProps {
   children: ReactNode;
   className?: string;
   innerGlow?: boolean;
-  style?: React.CSSProperties;
 }
 
-const Card: React.FC<CardProps> = ({ children, className = "", innerGlow = false, style }) => (
-  <div className={`relative rounded-2xl p-[1px] ${className}`} style={{ background: cardStroke, ...style }}>
-    <div className="relative rounded-2xl p-4 overflow-hidden" style={{ background: cardBg }}>
-      {innerGlow && (
-        <div className="absolute inset-x-0 bottom-0 h-[40%] bg-gradient-to-t from-black/70 to-transparent rounded-b-2xl z-10 pointer-events-none" />
-      )}
+const Card: React.FC<CardProps> = ({ children, className = "", innerGlow = false }) => (
+  <div className={`relative rounded-2xl p-[1px] ${className}`} style={{ background: cardStroke }}>
+    <div className="relative rounded-2xl p-4 overflow-hidden h-full" style={{ background: cardBg }}>
       <div className="relative z-20 flex flex-col gap-4 px-4 h-full">{children}</div>
     </div>
   </div>
@@ -30,7 +26,7 @@ const Card: React.FC<CardProps> = ({ children, className = "", innerGlow = false
 const GrowthImpact: React.FC = () => {
   const users = [
     { name: "Alex Hales", email: "alexhales@gmail.com", img: "/assets/carousel/1.jpg" },
-    { name: "Matthew Faris", email: "matthewfaris@gmail.com", img: "/assets/carousel/2.jpg" },
+    { name: "Mathew Faris", email: "mathewfaris@gmail.com", img: "/assets/carousel/2.jpg" },
     { name: "Georgia", email: "georgia@gmail.com", img: "/assets/carousel/3.jpg" },
   ];
 
@@ -44,12 +40,56 @@ const GrowthImpact: React.FC = () => {
           titleClassName="max-w-[70%]"
         />
 
+        {/* ================= TOP ROW ================= */}
+        <div className="grid grid-cols-5 gap-4 mb-4 text-left">
+          {/* LEFT 60% CARD */}
+          <Card className="col-span-3" innerGlow>
+            <div className="w-full h-64 relative rounded-xl overflow-hidden">
+              <Image
+                src="/assets/Home/Dashboard-1.png"
+                alt="Dashboard preview"
+                fill
+                className="object-contain"
+              />
+            </div>
+            <h3 className="text-2xl font-semibold m-0">All-in-One Dashboard</h3>
+            <p className="text-gray-300 text-md m-0">
+              Manage everything from a single, intuitive interface.
+            </p>
+          </Card>
+
+          {/* RIGHT GLASS CARDS */}
+          <Card className="col-span-2">
+            <div className="flex flex-col gap-2">
+              {users.map((u, i) => (
+                <div
+                  key={i}
+                  className="flex items-center justify-between w-full h-20 rounded-2xl p-4 bg-[#EFE5FC]/10 backdrop-blur-lg shadow-lg"
+                >
+                  <div className="w-14 h-14 relative rounded-full overflow-hidden">
+                    <Image src={u.img} alt={u.name} fill className="object-cover" />
+                  </div>
+                  <div className="text-left flex-1 ml-4">
+                    <p className="text-sm font-medium m-0">{u.name}</p>
+                    <p className="text-xs text-gray-400 m-0">{u.email}</p>
+                  </div>
+                  <div className="w-10 h-10 rounded-full bg-[#0D0318] flex items-center justify-center text-[#EFE5FC] text-xl">
+                    <IoSend />
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <h3 className="text-2xl font-semibold m-0">Seamless Integrations</h3>
+            <p className="text-gray-300 text-md m-0">Connect effortlessly with others.</p>
+          </Card>
+        </div>
+
         {/* ================= SECOND ROW ================= */}
         <div className="grid grid-cols-2 gap-4 text-left">
-          {/* LEFT STACK */}
+          {/* LEFT STACK USING CARD COMPONENT */}
           <div className="flex flex-col gap-6 h-full">
-            {/* Each left card takes 50% height of right card */}
-            <Card innerGlow style={{ flex: 1 }}>
+            <Card innerGlow className="flex-1">
               <div className="flex justify-between items-start h-full">
                 <div className="space-y-3">
                   <h3 className="text-2xl font-semibold text-white">Team Collaboration</h3>
@@ -70,7 +110,7 @@ const GrowthImpact: React.FC = () => {
               </div>
             </Card>
 
-            <Card innerGlow style={{ flex: 1 }}>
+            <Card innerGlow className="flex-1">
               <div className="flex justify-between items-center h-full">
                 <div className="space-y-3">
                   <h3 className="text-2xl font-semibold text-white">Regular Updates</h3>
@@ -96,11 +136,11 @@ const GrowthImpact: React.FC = () => {
           </div>
 
           {/* RIGHT TALL CARD */}
-          <Card className="p-6" innerGlow style={{ display: "flex", flexDirection: "column", height: "100%" }}>
-            <div className="relative w-full flex-1 rounded-xl overflow-hidden">
+          <Card className="p-6 h-full" innerGlow>
+            <div className="relative w-full h-45 rounded-xl overflow-hidden">
               <Image src="/assets/carousel/analytics.png" alt="Chart" fill className="object-contain" />
             </div>
-            <div className="flex flex-col gap-3 mt-2">
+            <div className="flex flex-col gap-3">
               <h3 className="text-2xl font-semibold m-0 text-white">Real-Time Analytics</h3>
               <p className="text-gray-400 text-md m-0">Drive decisions with powerful insights</p>
             </div>

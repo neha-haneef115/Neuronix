@@ -19,11 +19,14 @@ export default function SectionText({
 }: SectionTextProps) {
   return (
     <div id={id} className={`relative text-center py-16 ${className}`}>
-      <h2
-        className={`text-6xl mx-auto leading-[1.3] font-bold mb-6 text-[#EFE5FC] font-poppins ${titleClassName}`}
-      >
-        {title} {highlight && <span>{highlight}</span>}
-      </h2>
+    <h2 className={`text-6xl mx-auto leading-[1.3] font-bold mb-6 text-[#EFE5FC] font-poppins ${titleClassName}`}>
+  {title}
+  {highlight && (
+    <span className="block">
+      {highlight}
+    </span>
+  )}
+</h2>
 
       <p
         className={`text-md mx-auto text-gray-300 max-w-xl py-5 leading-relaxed font-poppins ${descClassName}`}
