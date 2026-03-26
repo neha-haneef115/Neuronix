@@ -5,7 +5,7 @@ import Image from "next/image";
 import { IoSend } from "react-icons/io5";
 
 const cardBg =
-  "radial-gradient(120% 120% at 85% 0%, rgba(80, 32, 151, 0.9) 0%, rgba(13,3,24,0.9) 55%, #0D0318 85%)";
+  "radial-gradient(120% 120% at 85% 0%, rgba(28, 8, 57, 1) 0%, rgba(13,3,24,0.9) 55%, #0D0318 85%)";
 const cardStroke =
   "linear-gradient(135deg, rgba(195,184,249,0.35) 0%, rgba(115,109,147,0.35) 100%)";
 
@@ -64,7 +64,7 @@ const GrowthImpact: React.FC = () => {
               {users.map((u, i) => (
                 <div
                   key={i}
-                  className="flex items-center justify-between w-full h-20 rounded-2xl p-4 bg-[#EFE5FC]/10 backdrop-blur-lg shadow-lg"
+                  className="flex items-center justify-between w-full h-20 rounded-2xl p-4 bg-[#EFE5FC]/10 "
                 >
                   <div className="w-14 h-14 relative rounded-full overflow-hidden">
                     <Image src={u.img} alt={u.name} fill className="object-cover" />

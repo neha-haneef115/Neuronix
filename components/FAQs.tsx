@@ -65,14 +65,14 @@ export default function FAQ() {
     > <SectionText
                    title="Your Questions?"
                    highlight="Answered"
-                   description="Clear answers to common questions. Straight to the point."
+                   description="Clear, concise answers to the questions you ask most. Fast, actionable, and right to the point every single time."
                  />
       
 
       {/* Accordion */}
       <div
         style={{
-          maxWidth: 680,
+          maxWidth: 880,
           margin: "0 auto",
           display: "flex",
           flexDirection: "column",
@@ -87,11 +87,11 @@ export default function FAQ() {
               style={{
                 background: isOpen
                   ? "linear-gradient(145deg, rgba(30,12,60,0.98) 0%, rgba(20,8,45,1) 100%)"
-                  : "rgba(255,255,255,0.04)",
+                  : "#07020f",
                 border: isOpen
-                  ? "1px solid rgba(130,80,200,0.25)"
-                  : "1px solid rgba(255,255,255,0.07)",
-                borderRadius: 14,
+                  ? "2px solid #180c36"
+                  : "2px solid #180c36",
+                borderRadius: 20,
                 overflow: "hidden",
                 transition: "border-color 0.25s, background 0.25s",
               }}
@@ -104,7 +104,7 @@ export default function FAQ() {
                   background: "none",
                   border: "none",
                   cursor: "pointer",
-                  padding: "18px 20px",
+                  padding: "28px 20px",
                   display: "flex",
                   alignItems: "center",
                   gap: 14,
@@ -116,8 +116,8 @@ export default function FAQ() {
                  
                 >
                   <svg
-                    width="26"
-                    height="26"
+                    width="18"
+                    height="18"
                     viewBox="0 0 10 10"
                     fill="none"
                     style={{
@@ -127,7 +127,7 @@ export default function FAQ() {
                   >
                     <path
                       d="M2 3.5L5 6.5L8 3.5"
-                      stroke="white"
+                      stroke="#c3b5f3"
                       strokeWidth="1.5"
                       strokeLinecap="round"
                       strokeLinejoin="round"
@@ -137,9 +137,9 @@ export default function FAQ() {
 
                 <span
                   style={{
-                    fontSize: 15,
-                    fontWeight: 600,
-                    color: "#fff",
+                    fontSize: 20,
+                    fontWeight: 400,
+                    color: "rgb(211 205 221)",
                     lineHeight: 1.4,
                   }}
                 >
@@ -157,9 +157,9 @@ export default function FAQ() {
               >
                 <p
                   style={{
-                    fontSize: 13.5,
-                    color: "rgba(255,255,255,0.55)",
-                    lineHeight: 1.75,
+                    fontSize: 16,
+                    color: "rgba(255, 255, 255, 0.7)",
+                    lineHeight: 1.78,
                     margin: 0,
                     padding: "0 20px 20px 60px",
                   }}
