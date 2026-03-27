@@ -160,7 +160,7 @@ export default function FinancialDashboard() {
                     and stay on top of your billing—you're in full control.
                   </p>
    
-<Button bg="#af75fd"  text="#240046">Learn More</Button>
+<Button $bg="#af75fd"  $text="#240046">Learn More</Button>
 
                 </div>
 
@@ -206,7 +206,7 @@ export default function FinancialDashboard() {
       Gain real-time insights, track key metrics, and
       optimize strategies for sustainable growth
     </p>
-    <Button bg="#23123d"  text="#EFE5FC">Get Started</Button>
+    <Button $bg="#23123d"  $text="#EFE5FC">Get Started</Button>
 
   </div>
 
