@@ -51,7 +51,7 @@ const RoamingSparks: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    const container = containerRef.current
+    const container = containerRef.current!
     if (!container) return
 
     const cleanups: (() => void)[] = []
