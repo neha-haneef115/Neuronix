@@ -54,7 +54,7 @@ export default function FAQ() {
   };
 
   return (
-    <section
+    <section id="FAQ"
       style={{
         width: "100%",
         background: "#0D0318",

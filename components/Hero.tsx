@@ -20,7 +20,7 @@ export default function Hero() {
         
         <div className="hidden text-xs md:flex items-center space-x-15">
           <a href="#Home" className="text-white hover:text-purple-300 transition-colors">Home</a>
-          <a href="#OurPlatfrom" className="text-white hover:text-purple-300 transition-colors">Our Platform</a>
+          <a href="#OurPlatform" className="text-white hover:text-purple-300 transition-colors">Our Platform</a>
           <a href="#Features" className="text-white hover:text-purple-300 transition-colors">Features</a>
           <a href="#FAQ" className="text-white hover:text-purple-300 transition-colors">FAQ</a>
           <a href="#Contact" className="text-white hover:text-purple-300 transition-colors">Contact</a>
@@ -46,9 +46,9 @@ export default function Hero() {
           <button className="bg-[#AF75FD] hover:bg-[#9C63E7] text-black/90 px-8 py-4 rounded-full font-medium transition-all transform hover:scale-105">
             Get Started Now
           </button>
-          <button className="border-1 border-white/90 text-white/90 hover:bg-white/5 hover:text-white px-6 py-3 rounded-full font-medium transition-all">
-            Try Tutorial Now
-          </button>
+         
+            <RippleButton className="border-1 border-white/90 text-white/90 hover:bg-white/5 hover:text-white px-6 py-3 rounded-full font-medium transition-all"> Try Tutorial Now</RippleButton>
+     
         </div>
         
        

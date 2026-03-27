@@ -1,26 +1,19 @@
 "use client";
 import { useState } from "react";
 import SectionText from "@/components/ui/SectionText"
-import { IoIosArrowForward } from "react-icons/io";
+import Chart from "@/components/ui/Chart";
+import Button from '@/components/ui/Button'
+import AnimatedNumber from "@/components/ui/AnimatedNumber";
 type Tab = "subscription" | "payments" | "discounts" | "transactions";
 
 const subscriptions = [
-  { name: "Zoom", icon: "/assets/Features/Zoom.png", plan: "Yearly Subscription", change: "+0.8%" },
-  { name: "Adobe XD", icon: "/assets/Features/xd.png", plan: "Monthly Subscription", change: "+2.5%" },
-  { name: "Notion", icon: "/assets/Features/notion.png", plan: "Yearly Subscription", change: "+0.3%" },
-  { name: "Google Drive", icon: "/assets/Features/drive.png", plan: "Monthly Subscription", change: "+0.9%" },
-  { name: "Discord", icon: "/assets/Features/discord.png", plan: "Yearly Subscription", change: "+1.2%" },
+  { name: "Zoom", icon: "/assets/Features/Zoom.png", plan: "Yearly Subscription", change: 0.8 },
+  { name: "Adobe XD", icon: "/assets/Features/xd.png", plan: "Monthly Subscription", change: 2.5 },
+  { name: "Notion", icon: "/assets/Features/notion.png", plan: "Yearly Subscription", change: 0.3 },
+  { name: "Google Drive", icon: "/assets/Features/drive.png", plan: "Monthly Subscription", change: 0.9 },
+  { name: "Discord", icon: "/assets/Features/discord.png", plan: "Yearly Subscription", change: 1.2 },
 ];
 
-const barData = [
-  { day: "Sat", value: 65 },
-  { day: "Sun", value: 45 },
-  { day: "Mon", value: 80 },
-  { day: "Tue", value: 55 },
-  { day: "Wed", value: 70 },
-  { day: "Thu", value: 60 },
-  { day: "Fri", value: 85 },
-];
 
 export default function FinancialDashboard() {
   const [activeTab, setActiveTab] = useState<Tab>("subscription");
@@ -40,7 +33,7 @@ export default function FinancialDashboard() {
      
       padding: "48px 40px",
     }}>
-      <div style={{ maxWidth: 960, margin: "0 auto" }}>
+      <div id="Features" style={{ maxWidth: 960, margin: "0 auto" }}>
 
           <SectionText
           title="All-in-One Financial Toolkit for"
@@ -142,7 +135,7 @@ export default function FinancialDashboard() {
                         </div>
                       </div>
                       <div style={{ textAlign: "left" }}>
-                        <div style={{ fontSize: 16, fontWeight: 600, color: "#EFE5FC" }}>{item.change}</div>
+                     <AnimatedNumber value={item.change} prefix="+" suffix="%" duration={1200} decimals={2} />
                         <div style={{ fontSize: 11, color: "rgba(255,255,255,0.3)", marginTop: 2 }}>Since Last Month</div>
                       </div>
                     </div>
@@ -167,44 +160,8 @@ export default function FinancialDashboard() {
                     and stay on top of your billing—you're in full control.
                   </p>
    
+<Button bg="#af75fd"  text="#240046">Learn More</Button>
 
-<button
-  style={{
-    display: "inline-flex",
-    alignItems: "center",
-    width: "fit-content", // 👈 important
-    background: "#af75fd",
-    border: "none",
-    borderRadius: "999px",
-    padding: "20px 24px", // 👈 balanced padding
-    cursor: "pointer",
-    fontSize: "19px",
-    fontWeight: 600,
-    letterSpacing: "0.01em",
-  }}
->
-  <div
-    style={{
-      marginRight: "6px",
-      color: "#240046",
-      whiteSpace: "nowrap", // 👈 prevents weird stretching
-    }}
-  >
-    Learn More
-  </div>
-
-  <div
-    style={{
-      display: "flex",
-      gap: "0.1px",
-      alignItems: "center",
-    }}
-  >
-    <IoIosArrowForward size={18} style={{ opacity: 0.3, color: "#240046" }} />
-    <IoIosArrowForward size={18} style={{ opacity: 0.6, color: "#240046" }} />
-    <IoIosArrowForward size={18} style={{ opacity: 1, color: "#240046" }} />
-  </div>
-</button>
                 </div>
 
                 <div style={{ display: "flex", gap: 48, paddingTop: 8 }}>
@@ -249,117 +206,12 @@ export default function FinancialDashboard() {
       Gain real-time insights, track key metrics, and
       optimize strategies for sustainable growth
     </p>
-<button
-  style={{
-    display: "inline-flex",
-    alignItems: "center",
-    width: "fit-content", // 👈 important
-    background: "#23123d",
-    border: "none",
-    borderRadius: "999px",
-    padding: "20px 24px", // 👈 balanced padding
-    cursor: "pointer",
-    fontSize: "16px",
-    fontWeight: 500,
-    letterSpacing: "0.01em",
-  }}
->
-  <div
-    style={{
-      marginRight: "6px",
-      color: "#EFE5FC",
-      whiteSpace: "nowrap", // 👈 prevents weird stretching
-    }}
-  >
-   Get Started
+    <Button bg="#23123d"  text="#EFE5FC">Get Started</Button>
+
   </div>
 
-  <div
-    style={{
-      display: "flex",
-      gap: "0.1px",
-      alignItems: "center",
-    }}
-  >
-    <IoIosArrowForward size={18} style={{ opacity: 0.3, color: "#EFE5FC" }} />
-    <IoIosArrowForward size={18} style={{ opacity: 0.6, color: "#EFE5FC" }} />
-    <IoIosArrowForward size={18} style={{ opacity: 1, color: "#EFE5FC" }} />
-  </div>
-</button>
-  </div>
+  {/* Right: Chart + stats */}<Chart/>
 
-  {/* Right: Chart + stats */}
-  <div style={{
-    background: "linear-gradient(145deg, rgba(168,85,247,0.1) 0%, rgba(124,58,237,0.03) 100%)",
-    border: "1px solid rgba(168,85,247,0.18)",
-    borderRadius: 24,
-    padding: "24px 24px 20px",
-  }}>
-    <div style={{ fontSize: 23, fontWeight: 600, color: "#EFE5FC", marginBottom: 20,lineHeight: 1.4 }}>
-      Average Weekly Stat of Subscription Growth
-    </div>
-
-    {/* Chart */}
-    <div style={{ display: "flex", gap: 20, alignItems: "flex-end" }}>
-      {/* Y-axis */}
-      <div style={{
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "space-between",
-        height: 180,
-        paddingBottom: 28,
-      }}>
-        {[100, 80, 60, 40, 20].map(v => (
-          <span key={v} style={{ fontSize: 15, color: "#EFE5FC", lineHeight: 1 }}>{v}</span>
-        ))}
-      </div>
-
-      {/* Bars + right stats */}
-      <div style={{
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "space-between",
-        flex: 1,
-        height: 204,
-      }}>
-        {/* Chart bars */}
-        <div style={{ display: "flex", alignItems: "flex-end", gap: 30, height: "100%" }}>
-          {barData.map((item) => (
-            <div key={item.day} style={{
-              flex: 1,
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-              gap: 8,
-              justifyContent: "flex-end",
-            }}>
-              <div
-  style={{
-    width: "100%",
-    height: `${(item.value / 100) * 180}px`,
-    background: `linear-gradient(
-      to top,
-      #af75fd 0%,
-      #af75fd ${item.value}%,
-      #f1f0f5ff ${item.value}%,
-      #f1f0f5ff 100%
-    )`,
-    borderRadius: "4px",
-    opacity: 0.85,
-  }}
-/>
-<span style={{ fontSize: 15, color: "#EFE5FC" }}>
-  {item.day}
-</span>
-             
-            </div>
-          ))}
-        </div>
-
-       
-      </div>
-    </div>
-  </div>
 </div>
 
           </div>

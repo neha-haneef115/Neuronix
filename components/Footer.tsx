@@ -55,30 +55,27 @@ export default function Footer() {
       >
         {/* Nav */}
         <nav style={{ display: "flex", gap: 36, marginBottom: 22 }}>
-          {[
-            { label: "Home", highlight: true },
-            { label: "Our Platform"},
-            { label: "Features" },
-            { label: "FAQ" },
-            { label: "Contact" },
-          ].map((item) => (
-            <a
-              key={item.label}
-              href="#"
-              style={{
-                fontSize: 12.5,
-                color: item.highlight
-                  ? "#9C63E7"
-                  : "#EFE5FC",
-                textDecoration: "none",
-                letterSpacing: "0.01em",
-              }}
-            >
-              {item.label}
-            </a>
-          ))}
-        </nav>
-
+  {[
+    { label: "Home", highlight: true, id: "Home" },
+    { label: "Our Platform", id: "OurPlatform" },
+    { label: "Features", id: "Features" },
+    { label: "FAQ", id: "FAQ" },
+    { label: "Contact", id: "Contact" },
+  ].map((item) => (
+    <a
+      key={item.label}
+      href={`#${item.id}`}
+      style={{
+        fontSize: 12.5,
+        color: item.highlight ? "#9C63E7" : "#EFE5FC",
+        textDecoration: "none",
+        letterSpacing: "0.01em",
+      }}
+    >
+      {item.label}
+    </a>
+  ))}
+</nav>
         {/* Tagline */}
         <p
           style={{

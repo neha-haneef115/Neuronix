@@ -7,7 +7,7 @@ import { IoSend } from "react-icons/io5";
 const cardBg =
   "radial-gradient(120% 120% at 85% 0%, rgba(28, 8, 57, 1) 0%, rgba(13,3,24,0.9) 55%, #0D0318 85%)";
 const cardStroke =
-  "linear-gradient(135deg, rgba(195,184,249,0.35) 0%, rgba(115,109,147,0.35) 100%)";
+  "rgba(168,85,247,0.2)";
 
 interface CardProps {
   children: ReactNode;
@@ -71,7 +71,7 @@ const GrowthImpact: React.FC = () => {
                   </div>
                   <div className="text-left flex-1 ml-4">
                     <p className="text-sm font-medium m-0">{u.name}</p>
-                    <p className="text-xs text-gray-400 m-0">{u.email}</p>
+                    <p className="text-xs text-gray-300 m-0">{u.email}</p>
                   </div>
                   <div className="w-10 h-10 rounded-full bg-[#0D0318] flex items-center justify-center text-[#EFE5FC] text-xl">
                     <IoSend />
@@ -93,7 +93,7 @@ const GrowthImpact: React.FC = () => {
               <div className="flex justify-between items-start h-full">
                 <div className="space-y-3">
                   <h3 className="text-2xl font-semibold text-white">Team Collaboration</h3>
-                  <p className="text-gray-400 text-base">Built-in communication & sharing</p>
+                  <p className="text-gray-300 text-base">Built-in communication & sharing</p>
                 </div>
                 <div className="flex -space-x-4">
                   {["/assets/carousel/1.avif", "/assets/carousel/2.avif", "/assets/carousel/3.avif"].map(
@@ -114,7 +114,7 @@ const GrowthImpact: React.FC = () => {
               <div className="flex justify-between items-center h-full">
                 <div className="space-y-3">
                   <h3 className="text-2xl font-semibold text-white">Regular Updates</h3>
-                  <p className="text-gray-400 text-base">Continuous improvements & new features</p>
+                  <p className="text-gray-300 text-base">Continuous improvements & new features</p>
                 </div>
                 <div className="w-16 h-16 rounded-full bg-gradient-to-br from-[#7B2CFF] to-[#A855F7] flex items-center justify-center shadow-lg">
                   <svg
@@ -142,7 +142,7 @@ const GrowthImpact: React.FC = () => {
             </div>
             <div className="flex flex-col gap-3">
               <h3 className="text-2xl font-semibold m-0 text-white">Real-Time Analytics</h3>
-              <p className="text-gray-400 text-md m-0">Drive decisions with powerful insights</p>
+              <p className="text-gray-300 text-md m-0">Drive decisions with powerful insights</p>
             </div>
           </Card>
         </div>
