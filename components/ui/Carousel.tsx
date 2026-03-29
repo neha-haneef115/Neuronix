@@ -3,7 +3,7 @@ import SectionText from "@/components/ui/SectionText";
 import React, { ReactNode } from "react";
 import Image from "next/image";
 import { IoSend } from "react-icons/io5";
-
+;
 const cardBg =
   "radial-gradient(120% 120% at 85% 0%, rgba(28, 8, 57, 1) 0%, rgba(13,3,24,0.9) 55%, #0D0318 85%)";
 const cardStroke =
@@ -110,35 +110,29 @@ const GrowthImpact: React.FC = () => {
               </div>
             </Card>
 
-            <Card innerGlow className="flex-1">
-              <div className="flex justify-between items-center h-full">
-                <div className="space-y-3">
-                  <h3 className="text-2xl font-semibold text-white">Regular Updates</h3>
-                  <p className="text-gray-300 text-base">Continuous improvements & new features</p>
-                </div>
-                <div className="w-16 h-16 rounded-full bg-gradient-to-br from-[#7B2CFF] to-[#A855F7] flex items-center justify-center shadow-lg">
-                  <svg
-                    className="w-8 h-8 text-white"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M4 4v6h6M20 20v-6h-6M20 9a8 8 0 00-14-3M4 15a8 8 0 0014 3"
-                    />
-                  </svg>
-                </div>
-              </div>
-            </Card>
+           <Card innerGlow className="flex-1">
+  <div className="flex justify-between items-center h-full">
+    
+    <div className="space-y-3">
+      <h3 className="text-2xl font-semibold text-white">Regular Updates</h3>
+      <p className="text-gray-300 text-base">
+        Continuous improvements & new features
+      </p>
+    </div>
+
+   <img
+  src="/assets/carousel/loop1.gif"
+  className="w-16 h-16 mix-blend-screen"
+/>
+
+  </div>
+</Card>
           </div>
 
           {/* RIGHT TALL CARD */}
           <Card className="p-6 h-full" innerGlow>
             <div className="relative w-full h-45 rounded-xl overflow-hidden">
-              <Image src="/assets/carousel/analytics.png" alt="Chart" fill className="object-contain" />
+              <Image src="/assets/carousel/dashboard.png" alt="Chart" fill className="object-contain" />
             </div>
             <div className="flex flex-col gap-3">
               <h3 className="text-2xl font-semibold m-0 text-white">Real-Time Analytics</h3>

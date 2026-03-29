@@ -58,5 +58,5 @@ span{
   scrollbar-width: none;
 }
 html {
-  scroll-behavior: smooth;
-}
+  scroll-behavior: smooth;}
+  /* styles/globals.css or module */
