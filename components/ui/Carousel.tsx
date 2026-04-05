@@ -26,22 +26,21 @@ const SendIcon: React.FC<{ delay: number }> = ({ delay }) => {
   const [inView, setInView] = useState(false);
 
   useEffect(() => {
-  const observer = new IntersectionObserver(
-    ([entry]) => {
-      setInView(entry.isIntersecting);
-    },
-    { threshold: 0.5 }
-  );
-  if (ref.current) observer.observe(ref.current);
-  return () => observer.disconnect();
-}, []);
+    const observer = new IntersectionObserver(
+      ([entry]) => setInView(entry.isIntersecting),
+      { threshold: 0.5 }
+    );
+    if (ref.current) observer.observe(ref.current);
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <div
       ref={ref}
       className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-[#0D0318] flex items-center justify-center text-[#EFE5FC] text-lg shrink-0"
       style={{
-        transform: inView ? "rotate(0deg)" : "rotate(-45deg)",
-        transition: `transform 1s ease ${delay}s`,
+        transform: inView ? "rotate(0deg)" : "rotate(-55deg)",
+        transition: `transform 0.7s ease ${delay}s`,
       }}
     >
       <IoSend />
@@ -50,11 +49,33 @@ const SendIcon: React.FC<{ delay: number }> = ({ delay }) => {
 };
 
 const GrowthImpact: React.FC = () => {
+  const leftStackRef = useRef<HTMLDivElement>(null);
+  const [animateImages, setAnimateImages] = useState(false);
+
   const users = [
     { name: "Alex Hales", email: "alexhales@gmail.com", img: "/assets/carousel/1.jpg" },
     { name: "Mathew Faris", email: "mathewfaris@gmail.com", img: "/assets/carousel/2.jpg" },
     { name: "Georgia", email: "georgia@gmail.com", img: "/assets/carousel/3.jpg" },
   ];
+
+  const leftImages = ["/assets/carousel/1.avif", "/assets/carousel/2.avif", "/assets/carousel/3.avif"];
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setAnimateImages(false);
+          setTimeout(() => setAnimateImages(true), 50);
+        } else {
+          setAnimateImages(false);
+        }
+      },
+      { threshold: 0.5 }
+    );
+
+    if (leftStackRef.current) observer.observe(leftStackRef.current);
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <section className="w-full text-white py-12 md:py-20">
@@ -68,7 +89,6 @@ const GrowthImpact: React.FC = () => {
 
         {/* ===== TOP ROW ===== */}
         <div className="flex flex-col lg:grid lg:grid-cols-5 gap-4 mb-4 text-left">
-
           {/* Dashboard card */}
           <Card className="w-full lg:col-span-3">
             <div className="w-full h-48 sm:h-56 md:h-64 relative rounded-xl overflow-hidden">
@@ -111,26 +131,34 @@ const GrowthImpact: React.FC = () => {
 
         {/* ===== SECOND ROW ===== */}
         <div className="flex flex-col md:grid md:grid-cols-2 gap-4 text-left">
-
           {/* Left stack */}
-          <div className="flex flex-col gap-4 h-full">
+          <div className="flex flex-col gap-4 h-full" ref={leftStackRef}>
             <Card className="flex-1">
               <div className="flex justify-between items-start gap-4 h-full">
                 <div className="space-y-2 sm:space-y-3">
                   <h3 className="text-xl sm:text-2xl font-semibold text-white">Team Collaboration</h3>
                   <p className="text-gray-300 text-sm sm:text-base">Built-in communication & sharing</p>
                 </div>
-                <div className="flex -space-x-3 sm:-space-x-4 shrink-0">
-                  {["/assets/carousel/1.avif", "/assets/carousel/2.avif", "/assets/carousel/3.avif"].map(
-                    (src, i) => (
+                <div className="flex shrink-0 relative">
+                  {leftImages.map((src, i) => {
+                    const initialOffset = i === 0 ? -60 : i === 1 ? -30 : 0;
+                    return (
                       <div
                         key={i}
                         className="relative w-10 h-10 sm:w-14 sm:h-14 rounded-full border-[3px] border-[#140726] overflow-hidden shadow-lg"
+                        style={{
+                          marginLeft: i === 0 ? "0px" : "-20px",
+                          transform: animateImages
+                            ? "translateX(0px)"
+                            : `translateX(${initialOffset}px)`,
+                          transition: `transform 0.8s ease ${i * 0.2}s`,
+                          zIndex: 10 - i,
+                        }}
                       >
                         <Image src={src} alt={`User ${i}`} fill className="object-cover" />
                       </div>
-                    )
-                  )}
+                    );
+                  })}
                 </div>
               </div>
             </Card>
@@ -139,9 +167,7 @@ const GrowthImpact: React.FC = () => {
               <div className="flex justify-between items-center h-full gap-4">
                 <div className="space-y-2 sm:space-y-3">
                   <h3 className="text-xl sm:text-2xl font-semibold text-white">Regular Updates</h3>
-                  <p className="text-gray-300 text-sm sm:text-base">
-                    Continuous improvements & new features
-                  </p>
+                  <p className="text-gray-300 text-sm sm:text-base">Continuous improvements & new features</p>
                 </div>
                 <img
                   src="/assets/carousel/loop1.gif"
