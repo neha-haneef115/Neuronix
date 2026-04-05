@@ -64,23 +64,35 @@ export default function Hero() {
       </nav>
 
       {/* Mobile Menu Overlay */}
-      <div
-        className={`fixed inset-0 z-10 bg-black/90 backdrop-blur-md flex flex-col items-center justify-center gap-8 transition-all duration-300 lg:hidden ${
-          menuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
-        }`}
+{/* Mobile Menu Overlay */}
+<div
+  className={`fixed inset-0 z-50 flex flex-col items-center justify-center gap-8 transition-all duration-300 lg:hidden
+    ${menuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"}
+    bg-white/20 backdrop-blur-xl border border-white/30 shadow-lg`}
+  onClick={() => setMenuOpen(false)} // click anywhere closes
+>
+  {/* Prevent closing when clicking inside menu items */}
+  <div className="flex flex-col items-center gap-8" onClick={(e) => e.stopPropagation()}>
+    {/* Optional mobile logo */}
+    <div className="absolute top-10 left-1/2 -translate-x-1/2 flex items-center gap-2">
+      <img src="/assets/Home/logo.png" alt="Neuronix Logo" className="h-8 w-auto" />
+      <span className="text-2xl text-white font-bold">Neuronix</span>
+    </div>
+
+    {["Home", "OurPlatform", "Features", "FAQ", "Contact"].map((item) => (
+      <a
+        key={item}
+        href={`#${item}`}
+        onClick={() => setMenuOpen(false)}
+        className="text-2xl text-white hover:text-purple-300 transition-colors font-medium"
       >
-        {["Home", "OurPlatform", "Features", "FAQ", "Contact"].map((item) => (
-          <a
-            key={item}
-            href={`#${item}`}
-            onClick={() => setMenuOpen(false)}
-            className="text-2xl text-white hover:text-purple-300 transition-colors font-medium"
-          >
-            {item === "OurPlatform" ? "Our Platform" : item}
-          </a>
-        ))}
-        <RippleButton>Contact Us</RippleButton>
-      </div>
+        {item === "OurPlatform" ? "Our Platform" : item}
+      </a>
+    ))}
+
+    <RippleButton>Contact Us</RippleButton>
+  </div>
+</div>
 
       {/* Hero Content */}
       <div

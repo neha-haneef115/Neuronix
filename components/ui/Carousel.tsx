@@ -41,7 +41,7 @@ const SendIcon: React.FC<{ delay: number }> = ({ delay }) => {
       className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-[#0D0318] flex items-center justify-center text-[#EFE5FC] text-lg shrink-0"
       style={{
         transform: inView ? "rotate(0deg)" : "rotate(-45deg)",
-        transition: `transform 0.8s ease ${delay}s`,
+        transition: `transform 1s ease ${delay}s`,
       }}
     >
       <IoSend />
