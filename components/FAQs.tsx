@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
-import SectionText from "@/components/ui/SectionText"
+import SectionText from "@/components/ui/SectionText";
+
 interface FAQItem {
   id: number;
   question: string;
@@ -47,102 +48,70 @@ const faqs: FAQItem[] = [
 ];
 
 export default function FAQ() {
-  const [openId, setOpenId] = useState<number | null>(1);
+  const [openId, setOpenId] = useState<number | null>(null);
 
   const toggle = (id: number) => {
     setOpenId((prev) => (prev === id ? null : id));
   };
 
   return (
-    <section id="FAQ"
+    <section
+      id="FAQ"
+      className="w-full py-16 sm:py-20 md:py-[90px] px-4 sm:px-6"
       style={{
-        width: "100%",
         background: "#0D0318",
-        padding: "90px 24px 100px",
         fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, sans-serif",
         boxSizing: "border-box",
       }}
-    > <SectionText
-                   title="Your Questions?"
-                   highlight="Answered"
-                   description="Clear, concise answers to the questions you ask most. Fast, actionable, and right to the point every single time."
-                 />
-      
+    >
+      <SectionText
+        title="Your Questions?"
+        highlight="Answered"
+        description="Clear, concise answers to the questions you ask most. Fast, actionable, and right to the point every single time."
+      />
 
       {/* Accordion */}
-      <div
-        style={{
-          maxWidth: 880,
-          margin: "0 auto",
-          display: "flex",
-          flexDirection: "column",
-          gap: 10,
-        }}
-      >
+      <div className="max-w-[880px] mx-auto flex flex-col gap-2 sm:gap-[10px]">
         {faqs.map((faq) => {
           const isOpen = openId === faq.id;
           return (
             <div
               key={faq.id}
+              className="rounded-2xl overflow-hidden transition-all duration-300"
               style={{
                 background: isOpen
                   ? "linear-gradient(145deg, rgba(30,12,60,0.98) 0%, rgba(20,8,45,1) 100%)"
                   : "#07020f",
-                border: isOpen
-                  ? "2px solid #180c36"
-                  : "2px solid #180c36",
-                borderRadius: 20,
-                overflow: "hidden",
-                transition: "border-color 0.25s, background 0.25s",
+                border: "2px solid #180c36",
               }}
             >
               {/* Question row */}
               <button
                 onClick={() => toggle(faq.id)}
-                style={{
-                  width: "100%",
-                  background: "none",
-                  border: "none",
-                  cursor: "pointer",
-                  padding: "28px 20px",
-                  display: "flex",
-                  alignItems: "center",
-                  gap: 14,
-                  textAlign: "left",
-                }}
+                className="w-full bg-transparent border-none cursor-pointer px-4 sm:px-5 py-5 sm:py-6 md:py-7 flex items-center gap-3 sm:gap-4 text-left"
               >
                 {/* Chevron */}
-                <div
-                 
-                >
-                  <svg
-                    width="18"
-                    height="18"
-                    viewBox="0 0 10 10"
-                    fill="none"
-                    style={{
-                      transform: isOpen ? "rotate(180deg)" : "rotate(0deg)",
-                      transition: "transform 0.25s ease",
-                    }}
-                  >
-                    <path
-                      d="M2 3.5L5 6.5L8 3.5"
-                      stroke="#c3b5f3"
-                      strokeWidth="1.5"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
-                </div>
-
-                <span
+                <svg
+                  width="16"
+                  height="16"
+                  className="sm:w-[18px] sm:h-[18px] shrink-0"
+                  viewBox="0 0 10 10"
+                  fill="none"
                   style={{
-                    fontSize: 20,
-                    fontWeight: 400,
-                    color: "rgb(211 205 221)",
-                    lineHeight: 1.4,
+                    transform: isOpen ? "rotate(180deg)" : "rotate(0deg)",
+                    transition: "transform 0.25s ease",
                   }}
                 >
+                  <path
+                    d="M2 3.5L5 6.5L8 3.5"
+                    stroke="#c3b5f3"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+
+                <span className="text-base sm:text-lg md:text-xl font-normal text-[rgb(211,205,221)] leading-snug">
                   {faq.question}
                 </span>
               </button>
@@ -155,15 +124,7 @@ export default function FAQ() {
                   transition: "max-height 0.35s ease",
                 }}
               >
-                <p
-                  style={{
-                    fontSize: 16,
-                    color: "rgba(255, 255, 255, 0.7)",
-                    lineHeight: 1.78,
-                    margin: 0,
-                    padding: "0 20px 20px 60px",
-                  }}
-                >
+                <p className="text-sm sm:text-base text-white/70 leading-relaxed m-0 px-4 sm:px-5 pb-5 pl-8 sm:pl-12 md:pl-[60px]">
                   {faq.answer}
                 </p>
               </div>

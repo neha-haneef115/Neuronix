@@ -17,85 +17,49 @@ const Chart = () => {
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
-        setAnimate(entry.isIntersecting); // true when in view, false when out
+        setAnimate(entry.isIntersecting);
       },
       { threshold: 0.3 }
     );
-
     if (chartRef.current) observer.observe(chartRef.current);
-
     return () => observer.disconnect();
   }, []);
 
   return (
     <div
       ref={chartRef}
+      className="rounded-3xl p-4 sm:p-6 border border-purple-500/20 w-full"
       style={{
-    background:  "radial-gradient(120% 120% at 85% 0%, rgba(28, 8, 57, 1) 0%, rgba(13,3,24,0.9) 55%, #0D0318 85%)",
-                border: "1px solid rgba(168,85,247,0.2)",
-        borderRadius: 24,
-        padding: "24px 24px 20px",
+        background:
+          "radial-gradient(120% 120% at 85% 0%, rgba(28, 8, 57, 1) 0%, rgba(13,3,24,0.9) 55%, #0D0318 85%)",
       }}
     >
-      <div
-        style={{
-          fontSize: 23,
-          fontWeight: 600,
-          color: "#EFE5FC",
-          marginBottom: 20,
-          lineHeight: 1.4,
-        }}
-      >
+      {/* Title */}
+      <div className="text-base sm:text-lg md:text-[23px] font-semibold text-[#EFE5FC] mb-4 sm:mb-5 leading-snug">
         Average Weekly Stat of Subscription Growth
       </div>
 
-      <div style={{ display: "flex", gap: 20, alignItems: "flex-end" }}>
+      <div className="flex gap-3 sm:gap-5 items-end">
         {/* Y Axis */}
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "space-between",
-            height: 180,
-            paddingBottom: 28,
-          }}
-        >
+        <div className="flex flex-col justify-between h-[120px] sm:h-[150px] md:h-[180px] pb-6 sm:pb-7">
           {[100, 80, 60, 40, 20].map((v) => (
-            <span
-              key={v}
-              style={{ fontSize: 14, color: "#EFE5FC", lineHeight: 1 }}
-            >
+            <span key={v} className="text-[10px] sm:text-xs md:text-sm text-[#EFE5FC] leading-none">
               {v}
             </span>
           ))}
         </div>
 
         {/* Bars */}
-        <div
-          style={{
-            display: "flex",
-            alignItems: "flex-end",
-            gap: 22,
-            height: 200,
-            flex: 1,
-          }}
-        >
+        <div className="flex items-end gap-1.5 sm:gap-3 md:gap-[22px] h-[130px] sm:h-[160px] md:h-[200px] flex-1">
           {barData.map((item, i) => {
-            const finalHeight = (item.value / 100) * 180;
+            const maxHeight = typeof window !== "undefined" && window.innerWidth < 640 ? 120 : 180;
+            const finalHeight = (item.value / 100) * maxHeight;
 
             return (
               <div
                 key={item.day}
-                style={{
-                  flex: 1,
-                  display: "flex",
-                  flexDirection: "column",
-                  alignItems: "center",
-                  gap: 8,
-                  justifyContent: "flex-end",
-                }}
+                className="flex-1 flex flex-col items-center gap-1 sm:gap-2 justify-end"
               >
-                {/* BAR */}
                 <div
                   style={{
                     width: "100%",
@@ -106,9 +70,7 @@ const Chart = () => {
                     borderRadius: 6,
                   }}
                 />
-
-                {/* DAY */}
-                <span style={{ fontSize: 14, color: "#EFE5FC" }}>
+                <span className="text-[9px] sm:text-xs md:text-sm text-[#EFE5FC]">
                   {item.day}
                 </span>
               </div>

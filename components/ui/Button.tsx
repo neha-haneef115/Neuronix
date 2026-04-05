@@ -44,8 +44,8 @@ const StyledButton = styled.button<ButtonProps>`
   cursor: pointer;
   border: none;
   border-radius: 999px;
-  padding: 20px 34px;
-  font-size: 20px;
+  padding: 12px 20px;
+  font-size: 14px;
   font-weight: 600;
   letter-spacing: 0.01em;
   background: ${props => props.$bg || "#ff135a"};
@@ -53,9 +53,25 @@ const StyledButton = styled.button<ButtonProps>`
   width: fit-content;
   transition: 0.5s;
 
+  @media (min-width: 640px) {
+    padding: 16px 28px;
+    font-size: 17px;
+  }
+
+  @media (min-width: 768px) {
+    padding: 20px 34px;
+    font-size: 20px;
+  }
+
   span {
-    margin-right: 0.5em;
+    margin-right: 0.4em;
     transition: 0.5s;
+    text-shadow: none;
+    opacity: 1;
+    color: ${props => props.$text || "#fff"};
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    backface-visibility: hidden;
   }
 
   svg {
@@ -76,16 +92,6 @@ const StyledButton = styled.button<ButtonProps>`
     svg polygon:nth-child(1) { transform: translateX(0%); animation: ${opacity} 1s infinite 0.6s; }
     svg polygon:nth-child(2) { transform: translateX(0%); animation: ${opacity} 1s infinite 0.4s; }
     svg polygon:nth-child(3) { animation: ${opacity} 1s infinite 0.2s; }
-  }
-
-  span {
-    margin-right: 0.4em;
-    text-shadow: none;
-    opacity: 1;
-    color: ${props => props.$text || "#fff"};
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    backface-visibility: hidden;
   }
 
   &:active {
