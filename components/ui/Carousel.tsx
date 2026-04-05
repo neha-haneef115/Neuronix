@@ -64,10 +64,11 @@ const GrowthImpact: React.FC = () => {
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
+          // Reset first so animation can run again
           setAnimateImages(false);
-          setTimeout(() => setAnimateImages(true), 50);
+          setTimeout(() => setAnimateImages(true), 50); // tiny delay triggers transition
         } else {
-          setAnimateImages(false);
+          setAnimateImages(false); // reset when leaving viewport
         }
       },
       { threshold: 0.5 }
@@ -89,7 +90,6 @@ const GrowthImpact: React.FC = () => {
 
         {/* ===== TOP ROW ===== */}
         <div className="flex flex-col lg:grid lg:grid-cols-5 gap-4 mb-4 text-left">
-          {/* Dashboard card */}
           <Card className="w-full lg:col-span-3">
             <div className="w-full h-48 sm:h-56 md:h-64 relative rounded-xl overflow-hidden">
               <Image
@@ -105,7 +105,6 @@ const GrowthImpact: React.FC = () => {
             </p>
           </Card>
 
-          {/* Users card */}
           <Card className="w-full lg:col-span-2">
             <div className="flex flex-col gap-2">
               {users.map((u, i) => (
@@ -141,16 +140,14 @@ const GrowthImpact: React.FC = () => {
                 </div>
                 <div className="flex shrink-0 relative">
                   {leftImages.map((src, i) => {
-                    const initialOffset = i === 0 ? -60 : i === 1 ? -30 : 0;
+                    const initialOffset = i === 0 ? -80 : i === 1 ? -40 : 0; // more separation
                     return (
                       <div
                         key={i}
                         className="relative w-10 h-10 sm:w-14 sm:h-14 rounded-full border-[3px] border-[#140726] overflow-hidden shadow-lg"
                         style={{
                           marginLeft: i === 0 ? "0px" : "-20px",
-                          transform: animateImages
-                            ? "translateX(0px)"
-                            : `translateX(${initialOffset}px)`,
+                          transform: animateImages ? "translateX(0px)" : `translateX(${initialOffset}px)`,
                           transition: `transform 0.8s ease ${i * 0.2}s`,
                           zIndex: 10 - i,
                         }}
