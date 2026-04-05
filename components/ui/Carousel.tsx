@@ -1,6 +1,6 @@
 "use client";
 import SectionText from "@/components/ui/SectionText";
-import React, { ReactNode } from "react";
+import React, { ReactNode, useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { IoSend } from "react-icons/io5";
 
@@ -11,7 +11,6 @@ const cardStroke = "rgba(168,85,247,0.2)";
 interface CardProps {
   children: ReactNode;
   className?: string;
-  innerGlow?: boolean;
 }
 
 const Card: React.FC<CardProps> = ({ children, className = "" }) => (
@@ -21,6 +20,34 @@ const Card: React.FC<CardProps> = ({ children, className = "" }) => (
     </div>
   </div>
 );
+
+const SendIcon: React.FC<{ delay: number }> = ({ delay }) => {
+  const ref = useRef<HTMLDivElement>(null);
+  const [inView, setInView] = useState(false);
+
+  useEffect(() => {
+  const observer = new IntersectionObserver(
+    ([entry]) => {
+      setInView(entry.isIntersecting);
+    },
+    { threshold: 0.5 }
+  );
+  if (ref.current) observer.observe(ref.current);
+  return () => observer.disconnect();
+}, []);
+  return (
+    <div
+      ref={ref}
+      className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-[#0D0318] flex items-center justify-center text-[#EFE5FC] text-lg shrink-0"
+      style={{
+        transform: inView ? "rotate(0deg)" : "rotate(-45deg)",
+        transition: `transform 0.8s ease ${delay}s`,
+      }}
+    >
+      <IoSend />
+    </div>
+  );
+};
 
 const GrowthImpact: React.FC = () => {
   const users = [
@@ -73,9 +100,7 @@ const GrowthImpact: React.FC = () => {
                     <p className="text-xs sm:text-sm font-medium m-0">{u.name}</p>
                     <p className="text-[10px] sm:text-xs text-gray-300 m-0 truncate">{u.email}</p>
                   </div>
-                  <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-[#0D0318] flex items-center justify-center text-[#EFE5FC] text-lg shrink-0">
-                    <IoSend />
-                  </div>
+                  <SendIcon delay={i * 0.15} />
                 </div>
               ))}
             </div>

@@ -8,12 +8,7 @@ interface ButtonProps {
   children?: React.ReactNode;
 }
 
-const Button: React.FC<ButtonProps> = ({
-  $bg = "#ff135a",
-  $text = "#fff",
-  $bgHover = "#ff1472",
-  children,
-}) => {
+const Button: React.FC<ButtonProps> = ({ $bg, $text, $bgHover, children }) => {
   const btnRef = useRef<HTMLButtonElement>(null);
 
   return (
@@ -89,10 +84,10 @@ const Button: React.FC<ButtonProps> = ({
         className="custom-btn"
         style={{ background: $bg, color: $text }}
         onMouseEnter={() => {
-          if (btnRef.current) btnRef.current.style.background = $bgHover;
+          if (btnRef.current && $bgHover) btnRef.current.style.background = $bgHover;
         }}
         onMouseLeave={() => {
-          if (btnRef.current) btnRef.current.style.background = $bg;
+          if (btnRef.current && $bg) btnRef.current.style.background = $bg;
         }}
       >
         <span style={{ color: $text }}>{children || "NEXT"}</span>
